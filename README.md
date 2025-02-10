@@ -1,1 +1,0 @@
-# testforestfires_ETE
