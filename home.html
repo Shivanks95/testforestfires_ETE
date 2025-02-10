@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FWI Prediction</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f0f8ff;
+            color: #333;
+            text-align: center;
+            padding: 20px;
+        }
+        h1 {
+            color: #4682b4;
+            animation: fadeIn 2s;
+        }
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+            animation: slideIn 1s;
+            max-width: 400px;
+            width: 100%;
+            margin: 0 auto;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+            text-align: left;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #4682b4;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        button:hover {
+            background-color: #5a9bd4;
+        }
+        h2 {
+            color: #32cd32;
+            animation: fadeIn 2s;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideIn {
+            from { transform: translateY(-20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    
+    <h1>Predict Fire Weather Index (FWI)</h1>
+    
+    <form action="{{ url_for('predict_datapoint')}}" method="post">
+
+        <label for="Temperature">Temperature:</label>
+        <input type="text" id="Temperature" name="Temperature" required="required"><br><br>
+
+        <label for="RH">Relative Humidity (RH):</label>
+        <input type="text" id="RH" name="RH" required="required"><br><br>
+
+        <label for="WS">Wind Speed (WS):</label>
+        <input type="text" id="WS" name="WS" required="required"><br><br>
+
+        <label for="RAIN">Rain:</label>
+        <input type="text" id="RAIN" name="RAIN" required="required"><br><br>
+
+        <label for="FFMC">Fine Fuel Moisture Code (FFMC):</label>
+        <input type="text" id="FFMC" name="FFMC" required="required"><br><br>
+
+        <label for="DMC">Duff Moisture Code (DMC):</label>
+        <input type="text" id="DMC" name="DMC" required="required"><br><br>
+
+        <label for="ISI">Initial Spread Index (ISI):</label>
+        <input type="text" id="ISI" name="ISI" required="required"><br><br>
+
+        <label for="Classes">Classes:</label>
+        <input type="text" id="Classes" name="Classes" required="required"><br><br>
+
+        <label for="Region">Region:</label>
+        <input type="text" id="Region" name="Region" required="required"><br><br>
+
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+        <h2>
+            The FWI prediction is {{results}}
+        </h2>
+</body>
+</html>
